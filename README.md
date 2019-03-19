@@ -7,7 +7,10 @@ zad1
 zad2
 
 Stworzyć wzór klasy - lista, następnie jej klasę pochodną - listę z dodatkową funkcją (elementy w listach poukładane w porządku rosnącym).
+
 Stworzyć strukturę zawierającą kilka napisów string (pierwszy element struktury decyduje o kolejności w liście).
+
 Stworzyć dla list wzorzec szczegółowy dla struktury.
+
 Sprawdzić działanie funkcji na różnych typach, między innymi dla utworzonej struktury.
 
