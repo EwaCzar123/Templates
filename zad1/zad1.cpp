@@ -1,78 +1,50 @@
-#include <iostream>
 #include <string>
+#include <typeinfo>
+#include <iostream>
+
 using namespace std;
 
-template <typename X, typename Y>
-X porownajwzorce(X liczba1, Y liczba2) // typ, nazwa i argumenty
-{
 
+template <typename T, typename D>
+void pokaz(T  a, D b) {
 
-	if (liczba1 > liczba2) // sprawdzamy warunki
-	{
-		cout << "liczba1: " << liczba1 << " jest wieksza od liczby: " << liczba2 << endl;
+	cout << a << " , " << b << endl;
+	cout << " my type is : " << typeid(a).name() << endl;
+	cout << " my type is : " << typeid(b).name() << endl;
+}
+template <typename T, typename D>
+void poka(T a, D b) {
+	cout << a << " , " << b << endl;
 
-
-	}
-
-	if (liczba1 < liczba2) // jeúli pierwszy warunek siÍ nie zgadza to sprawdzamy
-	{
-		cout << "liczba2: " << liczba2 << " jest wieksza od liczby: " << liczba1 << endl;
-
-	}
-
-	if (liczba1 == liczba2) // ostatnia opcja to rÛwnoúÊ dwÛch liczb
-	{
-		cout << "liczby sa rowne:" << endl;
-
-	}
-	cout << " my type is : " << typeid(liczba1).name() << endl;
-	cout << " my type is : " << typeid(liczba2).name() << endl;
-
-	return 0;
 }
 
-void porownaj(float liczba1, float liczba2) // typ, nazwa i argumenty
-{
-	
+int main() {
 
-	if (liczba1 > liczba2) // sprawdzamy warunki
-	{
-		cout << "liczba1: " << liczba1 << " jest wieksza od liczby: " << liczba2 << endl;
-	
-	}
+	poka(3, 5.7);
+	poka(3.0, 5.0);
+	poka(12.123, 4);
+	poka(12.123, 4);
+	poka("jestem ", " string");
 
-	if (liczba1 < liczba2) // jeúli pierwszy warunek siÍ nie zgadza to sprawdzamy
-	{
-		cout << "liczba2: " << liczba2 << " jest wieksza od liczby: " << liczba1 << endl;
-		
-	}
 
-	if (liczba1 == liczba2) // ostatnia opcja to rÛwnoúÊ dwÛch liczb
-	{
-		cout << "liczby sa rowne:" << endl;
-		
-	}
-	
-}
 
-int main()
-{
-	int *a, *b;
-	int d=2, c=5;
-	a =&d;
-	b = &c;
-	porownaj(2,5);
-	porownaj(7, 'u'); //zamieni na kod ASCII
+	//r√≥≈ºne mo≈ºliwo≈õci wywo≈Çania funkcji
 
-	porownajwzorce(2, 5);
-	porownajwzorce(2, 5);
-	porownajwzorce<double,double>(*a, *b);
-	porownajwzorce(*a, *b);
-	porownajwzorce(7,'u');
-	porownajwzorce('a', 'b');
-	system("pause");
-	return 0;
+	// void pokaz< typename T>(T a, D b)
+
+
+	pokaz(3, 5.7); //wywolanie wzorca pokaz<int> w spos√≥b niejawny (dedukcja)
+	pokaz(3.0, 5.0); //wywolanie wzorca pokaz<double> w spos√≥b niejawny (dedukcja)
+	pokaz<>(3.0, 5.0); //wywolanie wzorca pokaz<double> w spos√≥b niejawny (dedukcja)
+	pokaz<double>(12.123, 4); //wywolanie wzorca pokaz<double> w spos√≥b jawny (bez dedukcji)
+	pokaz("jestem ", " string"); //wywolanie wzorca pokaz<string> w spos√≥b niejawny (dedukcja)
+	pokaz<string, string>("jestem ", " string"); //wywolanie wzorca pokaz<string> w spos√≥b niejawny (dedukcja)
+
+	pokaz<double, double>(12.123, 4); //wywolanie wzorca pokaz<double> w spos√≥b jawny (bez dedukcji)
+
 
 	system("pause");
+
 	return 0;
 }
+
